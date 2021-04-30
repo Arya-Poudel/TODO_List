@@ -4,15 +4,12 @@ import Tasks from './Tasks';
 import Home from './Home';
 
 
-const Navbar = ({addProject, projects, defaultTasks, deleteTask, editTask, addDefaultTask}) => {
+const Navbar = ({addProject, projects, defaultTasks, deleteTask, editTask, addDefaultTask, deleteProject}) => {
 
 	const showNav = () =>{
 		const burger = document.querySelector('.burger');
 		const nav = document.querySelector('.nav-links');
-		//toggle nav
 		nav.classList.toggle('nav-active');
-
-		//burger animation
 		burger.classList.toggle('toggle');
 	}
 
@@ -56,21 +53,14 @@ const Navbar = ({addProject, projects, defaultTasks, deleteTask, editTask, addDe
 				</div>
 				<div className = "projects">
 					{showProjects && projects.map((project) => (
-							<li key={project.key} onClick = {handleProjectClick}>{project.name}</li>	
+						<li key = {project.key} onClick = {handleProjectClick}>{project.name}</li>
 					))}
 				</div>
 				
 			</ul>
 		</div>
-		 <Home 
-	          addDefaultTask = {addDefaultTask} 
-	          deleteTask = {deleteTask}
-	          defaultTasks = {defaultTasks}
-	          editTask = {editTask}
-	          projects = {projects}
-	          projectToShow = {projectToShow}
-	      />
-		<h2 style={{"textAlign":"center","textTransform":"uppercase","textDecoration":"underline"}} id = "project_to_show">{projectToShow} </h2>
+		
+		<h2 style={{"textAlign":"center","textTransform":"uppercase","textDecoration":"underline","color": "#4a4949"}} id = "project_to_show">{projectToShow} </h2>
 		{defaultTasks.map((defaultTask) => (
 					<Tasks
 					     key={defaultTask.id} 
@@ -81,6 +71,14 @@ const Navbar = ({addProject, projects, defaultTasks, deleteTask, editTask, addDe
 					     projectToShow = {projectToShow}
 					/>
 				))}
+		 <Home 
+	          addDefaultTask = {addDefaultTask} 
+	          deleteTask = {deleteTask}
+	          defaultTasks = {defaultTasks}
+	          editTask = {editTask}
+	          projects = {projects}
+	          projectToShow = {projectToShow}
+	      />
 		</>
 	)
 }

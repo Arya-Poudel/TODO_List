@@ -45,8 +45,12 @@ const Tasks = ({task, deleteTask, editTask, projects, projectToShow}) => {
 		<div className = {task.completed === 'Completed' ? 'tasks completed' : 'tasks'}>
 
 			<div className = "task-title">
-				<h2>{task.name}</h2>
+				<div className = "priority-div">
+					<div className={task.priority}></div>
+					<h2>{task.name}</h2>
+				</div>
 				<div className = 'task-icons'>
+					
 					<input type="checkbox" style = {{"marginRight": "15px", "cursor" : "pointer"}} onClick = {handleCheckTask} defaultChecked={task.completed==='Completed'}/>
 					<span className="material-icons-outlined" style = {{ "cursor" : "pointer"}} onClick = {() => deleteTask(task.id)}>delete</span>
 					<span className="material-icons-outlined" style = {{ "cursor" : "pointer"}} onClick = {openEditForm}>edit</span>
@@ -78,9 +82,9 @@ const Tasks = ({task, deleteTask, editTask, projects, projectToShow}) => {
 				/>
 			}			 
 		</div>
-		}
-		
+		}		
 		</>
 	)
-}
+};
+
 export default Tasks;

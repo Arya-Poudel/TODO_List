@@ -81,19 +81,19 @@ body{
 
 .new-task-btn{
   padding: 10px;
-  border: 2px solid  #ef4f4f;
+  border: 2px solid  #4a4949;
   border-radius: 10px;
   font-weight: bold;
+  letter-spacing: 1px;
   cursor: pointer;
-  background: #ef4f4f;
-  color: white;
+  background:  #f3b1b1;
+  color: black ;
+  margin: 10px;
 }
 
 .new-task-btn:hover{
-  border: 2px solid #7d0b0b;
-  background: #7d0b0b;
-  color:  #f3b1b1;
-
+  color: white;
+  background: #ef4f4f
 }
 
 /*form*/
@@ -122,11 +122,10 @@ body{
 }
 
 .input-field-select{
-  height: 2.2rem;
   outline: none;
-   border: 1px solid black;
-    border-radius: 10px;
-     padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 .input-query {
@@ -143,9 +142,6 @@ input{
 }
 
 @media(max-width: 330px){
-  /*.form-wrapper{
-    display: grid;
-  }*/
   .input-fields{
     width: 220px;
   }
@@ -188,6 +184,7 @@ input{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
 
 /*tasks*/
@@ -203,7 +200,7 @@ input{
 }
 
 .task-title{
-display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
@@ -214,8 +211,31 @@ display: flex;
   align-items: center;
 }
 
-.task-desc{
+.priority-div{
+    display: flex;
+    align-items: center;
+}
 
+.priority-div h2{
+  text-transform: capitalize;
+}
+.high{
+  background:  red;
+}
+
+.neutral{
+  background:#fdc45a; 
+}
+
+.low{
+  background: #37d8d0;
+}
+
+.high, .neutral, .low{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
 #project_name{
@@ -236,7 +256,6 @@ display: flex;
 .projects{
   display: grid;
   margin-left: 10px;
-  /*grid-gap: 10px;*/
 }
 
 .projects li{
