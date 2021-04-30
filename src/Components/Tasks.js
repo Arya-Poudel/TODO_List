@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Form from './Form';
 import uniqid from 'uniqid';
 
-const Task = ({task, deleteTask, editTask, projects}) => {
+const Tasks = ({task, deleteTask, editTask, projects, projectToShow}) => {
 
 	const [showDescription , setShowDescription] = useState(false);
 	const [showEditForm, setShowEditForm] = useState(false);
@@ -24,6 +24,7 @@ const Task = ({task, deleteTask, editTask, projects}) => {
 			duedate : e.target.duedate.value,
 			priority : e.target.priority.value,
 			completed: task.completed,
+			in_project: e.target.in_project.value,
 		}
 		setShowEditForm(false);
 		editTask(task.id, newTask);
@@ -40,7 +41,9 @@ const Task = ({task, deleteTask, editTask, projects}) => {
 
 	return(
 		<>
+		{(projectToShow === task.in_project) && 
 		<div className = {task.completed === 'Completed' ? 'tasks completed' : 'tasks'}>
+
 			<div className = "task-title">
 				<h2>{task.name}</h2>
 				<div className = 'task-icons'>
@@ -61,19 +64,23 @@ const Task = ({task, deleteTask, editTask, projects}) => {
 					<p><b>Due-date:</b> {task.duedate}</p>
 					<p><b>Priority:</b> {task.priority}</p>
 					<p><b>{task.completed}</b></p>
+					<p><b>Project: {task.in_project}</b></p>
 				</div>
 			}
-		</div>
+		
 			{showEditForm && 
 				<Form 
 					handleSubmit = {handleFormEdit}
 					closeForm = {closeEditForm}
 					task = {task}
 					projects = {projects}
+					projectToShow = {projectToShow}
 				/>
-			}			
+			}			 
+		</div>
+		}
 		
 		</>
 	)
 }
-export default Task;
+export default Tasks;

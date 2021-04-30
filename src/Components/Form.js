@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Form = ({handleSubmit, closeForm, task, projects}) => {
+const Form = ({handleSubmit, closeForm, task, projects, projectToShow}) => {
 
 	let buttonText;
 	if (task.name) {
@@ -9,7 +9,6 @@ const Form = ({handleSubmit, closeForm, task, projects}) => {
 		 buttonText = 'Add';
 		 task.priority = 'neutral';
 	}
-
 	return(
 		<div>
 			<form className="form-wrapper" autoComplete="off" onSubmit={handleSubmit}>
@@ -32,7 +31,7 @@ const Form = ({handleSubmit, closeForm, task, projects}) => {
 				</div>
 
 				<label htmlFor = "in_project" className="input-query">Project: </label>
-				<select name = "in_project" id = "in_project" className="input-field-select">
+				<select name = "in_project" id = "in_project" className="input-field-select" defaultValue = {projectToShow}>
 					{projects.map((project) => (
 						<option value = {project.name} key={project.key}>{project.name} </option>
 					))}

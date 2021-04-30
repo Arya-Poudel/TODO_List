@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ProjectForm from './ProjectForm';
+import Tasks from './Tasks';
+import Home from './Home';
 
-const Navbar = ({addProject, projects}) => {
+
+const Navbar = ({addProject, projects, defaultTasks, deleteTask, editTask, addDefaultTask}) => {
 
 	const showNav = () =>{
 		const burger = document.querySelector('.burger');
@@ -15,16 +18,19 @@ const Navbar = ({addProject, projects}) => {
 
 	const [showProjects, setShowProjects] = useState(true);
 
-	const showTaskInProject = (e) => {
-		console.log(projects);
-		console.log(e.target.textContent)
+	const [projectToShow, setProjectToShow] = useState('Default');
+
+	const handleProjectClick = (e) => {
+		let projectToShowName = e.target.textContent;
+		setProjectToShow(projectToShowName);
 	}
 	
 	useEffect(() => {
-		setShowProjects(true)
+		setShowProjects(true);
 	}, [projects])
 
 	return(
+		<>
 		<div className = "top-nav">
 			<div className="burger" onClick={showNav}>
 				<div className = "line1"></div>
@@ -50,11 +56,32 @@ const Navbar = ({addProject, projects}) => {
 				</div>
 				<div className = "projects">
 					{showProjects && projects.map((project) => (
-							<li key={project.key} onClick = {showTaskInProject}>{project.name}</li>	
+							<li key={project.key} onClick = {handleProjectClick}>{project.name}</li>	
 					))}
 				</div>
+				
 			</ul>
 		</div>
+		 <Home 
+	          addDefaultTask = {addDefaultTask} 
+	          deleteTask = {deleteTask}
+	          defaultTasks = {defaultTasks}
+	          editTask = {editTask}
+	          projects = {projects}
+	          projectToShow = {projectToShow}
+	      />
+		<h2 style={{"textAlign":"center","textTransform":"uppercase","textDecoration":"underline"}} id = "project_to_show">{projectToShow} </h2>
+		{defaultTasks.map((defaultTask) => (
+					<Tasks
+					     key={defaultTask.id} 
+					     task={defaultTask} 
+					     deleteTask={deleteTask}
+					     editTask ={editTask}
+					     projects = {projects}
+					     projectToShow = {projectToShow}
+					/>
+				))}
+		</>
 	)
 }
 

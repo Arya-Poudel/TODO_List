@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
-import Home from './Components/Home';
 
 
 function App() {
@@ -32,13 +31,10 @@ function App() {
       <Navbar 
           addProject = {addProject}
           projects = {projects}
-      />
-      <Home 
-          addDefaultTask = {addDefaultTask} 
-          deleteTask = {deleteTask}
           defaultTasks = {defaultTasks}
+          deleteTask = {deleteTask}
           editTask = {editTask}
-          projects = {projects}
+          addDefaultTask = {addDefaultTask}
       />
     </div>
   );

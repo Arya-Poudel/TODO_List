@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import uniqid from 'uniqid';
-import Tasks from './Tasks';
 import Form from './Form';
 
 
-const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects}) => {
+const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects, projectToShow}) => {
 
 	const [isTaskForm, setIsTaskForm] = useState(false);
 
@@ -21,7 +20,6 @@ const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects}) =>
 		}
 		setIsTaskForm(false);
 		addDefaultTask(task);
-		console.log(task);
 	}
 
 	const closeForm = () => {
@@ -38,18 +36,10 @@ const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects}) =>
 					closeForm={closeForm}
 					task={{id: '', name: '', description:'', duedate:'', priority:''}}
 					projects = {projects}
+					projectToShow = {projectToShow}
 				/>
 			}
 		</div>
-		{defaultTasks.map((defaultTask) => (
-			<Tasks
-			     key={defaultTask.id} 
-			     task={defaultTask} 
-			     deleteTask={deleteTask}
-			     editTask ={editTask}
-			     projects = {projects}
-			/>
-		))}
 	  </>
 	)
 };
