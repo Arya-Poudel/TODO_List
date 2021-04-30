@@ -1,5 +1,4 @@
-/*heading*/
-
+/*navbar*/
 .top-nav{
   background: #4a4949;
   display: flex;
@@ -27,10 +26,10 @@
   transition: all 0.3s ease;
 }
 
-
 body{
   overflow-x: hidden;
 }
+
 .nav-links{
   position: absolute;
   left: 0;
@@ -44,7 +43,6 @@ body{
   width: 250px
 }
 
-
 .nav-links li{
   list-style: none;
   padding: 5px;
@@ -54,11 +52,9 @@ body{
   letter-spacing: 2px;
 }
 
-
 .nav-active{
   transform: translateX(0%);
 }
-
 
 .toggle .line1{
   transform: rotate(-45deg) translate(-5px,6px);
@@ -238,12 +234,21 @@ input{
   margin-right: 10px;
 }
 
+/*projects*/
+
 #project_name{
   display: block;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid black;
   margin: 5px;
+}
+
+.project_to_show{
+  color: #4a4949;
+  text-decoration: underline;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .projects-show{
@@ -260,5 +265,9 @@ input{
 
 .projects li{
   border-bottom: 3px solid white;
+  cursor: pointer;
+}
+
+.material-icons-outlined{
   cursor: pointer;
 }

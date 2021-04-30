@@ -3,7 +3,7 @@ import uniqid from 'uniqid';
 import Form from './Form';
 
 
-const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects, projectToShow}) => {
+const Home = ({addTask, projects, projectToShow}) => {
 
 	const [isTaskForm, setIsTaskForm] = useState(false);
 
@@ -19,7 +19,7 @@ const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects, pro
 			in_project: e.target.in_project.value,
 		}
 		setIsTaskForm(false);
-		addDefaultTask(task);
+		addTask(task);
 	}
 
 	const closeForm = () => {
@@ -27,7 +27,6 @@ const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects, pro
 	}
 
 	return(
-	  <>
 		<div className = "home">
 			<button className = "new-task-btn" onClick = {() => setIsTaskForm(true)}>Add New Task</button>
 			{isTaskForm &&
@@ -40,7 +39,6 @@ const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects, pro
 				/>
 			}
 		</div>
-	  </>
 	)
 };
 

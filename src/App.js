@@ -2,28 +2,19 @@ import './App.css';
 import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
 
-
 function App() {
 
-  const [defaultTasks, setDefaultTasks] = useState([]);
+  const [addedTasks, setAddedTasks] = useState([]);
 
   const [projects, setProjects] = useState([{name:"Default", key:"default"}]);
 
-  const addProject = (project) => {
-    setProjects([...projects, project]);
-  }
+  const addProject = (project) => setProjects([...projects, project]);
+  
+  const addTask = (task) => setAddedTasks([...addedTasks, task]);
 
-  const addDefaultTask = (task) => {
-    setDefaultTasks([...defaultTasks, task]);
-  }
+  const deleteTask = (id) => setAddedTasks(addedTasks.filter(addedTask => addedTask.id !== id));
 
-  const deleteTask = (id) => {
-    setDefaultTasks(defaultTasks.filter(defaultTask => defaultTask.id !== id))
-  }
-
-  const editTask = (id, newTask) => {
-    setDefaultTasks(defaultTasks.map(defaultTask => (defaultTask.id === id)? newTask : defaultTask))
-  }
+  const editTask = (id, newTask) => setAddedTasks(addedTasks.map(addedTask => (addedTask.id === id)? newTask : addedTask));
 
 
   return (
@@ -31,10 +22,10 @@ function App() {
       <Navbar 
           addProject = {addProject}
           projects = {projects}
-          defaultTasks = {defaultTasks}
+          addedTasks = {addedTasks}
           deleteTask = {deleteTask}
           editTask = {editTask}
-          addDefaultTask = {addDefaultTask}
+          addTask = {addTask}
       />
     </div>
   );

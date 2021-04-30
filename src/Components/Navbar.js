@@ -4,7 +4,7 @@ import Tasks from './Tasks';
 import Home from './Home';
 
 
-const Navbar = ({addProject, projects, defaultTasks, deleteTask, editTask, addDefaultTask, deleteProject}) => {
+const Navbar = ({addProject, projects, addedTasks, deleteTask, editTask, addTask}) => {
 
 	const showNav = () =>{
 		const burger = document.querySelector('.burger');
@@ -35,20 +35,15 @@ const Navbar = ({addProject, projects, defaultTasks, deleteTask, editTask, addDe
 				<div className = "line3"></div>
 			</div>
 			<h1>TODO LIST</h1>
-
-			
-			<ul className = "nav-links">
-				<li>Home</li>
-				
-				<li><ProjectForm addProject = {addProject} projects = {projects}/></li>
-
+			<ul className = "nav-links">				
+				<li><ProjectForm addProject = {addProject}/></li>
 				<div className = "projects-show">
 					<li>Projects</li>
 					{!showProjects &&
-						<span className="material-icons-outlined" style = {{ "cursor" : "pointer"}} onClick = {() => setShowProjects(true)}>expand_more</span>
+						<span className="material-icons-outlined" onClick = {() => setShowProjects(true)}>expand_more</span>
 					}
 					{showProjects &&
-						<span className="material-icons-outlined" style = {{ "cursor" : "pointer"}} onClick = {() => setShowProjects(false)}>expand_less</span>
+						<span className="material-icons-outlined" onClick = {() => setShowProjects(false)}>expand_less</span>
 					}
 				</div>
 				<div className = "projects">
@@ -60,22 +55,19 @@ const Navbar = ({addProject, projects, defaultTasks, deleteTask, editTask, addDe
 			</ul>
 		</div>
 		
-		<h2 style={{"textAlign":"center","textTransform":"uppercase","textDecoration":"underline","color": "#4a4949"}} id = "project_to_show">{projectToShow} </h2>
-		{defaultTasks.map((defaultTask) => (
-					<Tasks
-					     key={defaultTask.id} 
-					     task={defaultTask} 
-					     deleteTask={deleteTask}
-					     editTask ={editTask}
-					     projects = {projects}
-					     projectToShow = {projectToShow}
-					/>
-				))}
+		<h2 className = "project_to_show">{projectToShow} </h2>
+		{addedTasks.map((addedTask) => (
+			<Tasks
+			     key={addedTask.id} 
+			     task={addedTask} 
+			     deleteTask={deleteTask}
+			     editTask ={editTask}
+			     projects = {projects}
+			     projectToShow = {projectToShow}
+			/>
+		))}
 		 <Home 
-	          addDefaultTask = {addDefaultTask} 
-	          deleteTask = {deleteTask}
-	          defaultTasks = {defaultTasks}
-	          editTask = {editTask}
+	          addTask = {addTask} 
 	          projects = {projects}
 	          projectToShow = {projectToShow}
 	      />
