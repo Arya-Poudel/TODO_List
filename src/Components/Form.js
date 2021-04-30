@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Form = ({handleSubmit, closeForm, task}) => {
+const Form = ({handleSubmit, closeForm, task, projects}) => {
 
 	let buttonText;
 	if (task.name) {
@@ -30,6 +30,13 @@ const Form = ({handleSubmit, closeForm, task}) => {
 					<input type="radio" id="neutral" name="priority" value="neutral" defaultChecked={task.priority === 'neutral'} />
 					<label htmlFor="neutral">Neutral</label>
 				</div>
+
+				<label htmlFor = "in_project" className="input-query">Project: </label>
+				<select name = "in_project" id = "in_project" className="input-field-select">
+					{projects.map((project) => (
+						<option value = {project.name} key={project.key}>{project.name} </option>
+					))}
+				</select>
 
 				<div className="form-buttons">
 					<button className="add-task-btn" type="submit">{buttonText}</button>

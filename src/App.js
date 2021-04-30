@@ -8,6 +8,12 @@ function App() {
 
   const [defaultTasks, setDefaultTasks] = useState([]);
 
+  const [projects, setProjects] = useState([{name:"Default", key:"default"}]);
+
+  const addProject = (project) => {
+    setProjects([...projects, project]);
+  }
+
   const addDefaultTask = (task) => {
     setDefaultTasks([...defaultTasks, task]);
   }
@@ -23,12 +29,16 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar 
+          addProject = {addProject}
+          projects = {projects}
+      />
       <Home 
           addDefaultTask = {addDefaultTask} 
           deleteTask = {deleteTask}
           defaultTasks = {defaultTasks}
           editTask = {editTask}
+          projects = {projects}
       />
     </div>
   );

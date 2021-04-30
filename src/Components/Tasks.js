@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Form from './Form';
 import uniqid from 'uniqid';
 
-const Task = ({task, deleteTask, editTask}) => {
+const Task = ({task, deleteTask, editTask, projects}) => {
 
 	const [showDescription , setShowDescription] = useState(false);
 	const [showEditForm, setShowEditForm] = useState(false);
@@ -69,6 +69,7 @@ const Task = ({task, deleteTask, editTask}) => {
 					handleSubmit = {handleFormEdit}
 					closeForm = {closeEditForm}
 					task = {task}
+					projects = {projects}
 				/>
 			}			
 		

@@ -4,7 +4,7 @@ import Tasks from './Tasks';
 import Form from './Form';
 
 
-const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask}) => {
+const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask, projects}) => {
 
 	const [isTaskForm, setIsTaskForm] = useState(false);
 
@@ -17,9 +17,11 @@ const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask}) => {
 			duedate : e.target.duedate.value,
 			priority : e.target.priority.value,
 			completed: 'Not completed',
+			in_project: e.target.in_project.value,
 		}
 		setIsTaskForm(false);
 		addDefaultTask(task);
+		console.log(task);
 	}
 
 	const closeForm = () => {
@@ -35,6 +37,7 @@ const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask}) => {
 					handleSubmit={handleSubmit}
 					closeForm={closeForm}
 					task={{id: '', name: '', description:'', duedate:'', priority:''}}
+					projects = {projects}
 				/>
 			}
 		</div>
@@ -44,6 +47,7 @@ const Home = ({addDefaultTask, defaultTasks, deleteTask, editTask}) => {
 			     task={defaultTask} 
 			     deleteTask={deleteTask}
 			     editTask ={editTask}
+			     projects = {projects}
 			/>
 		))}
 	  </>
