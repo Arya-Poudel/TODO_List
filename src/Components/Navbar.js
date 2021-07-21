@@ -29,13 +29,13 @@ const Navbar = ({addProject, projects, addedTasks, deleteTask, editTask, addTask
 	return(
 		<>
 		<div className = "top-nav">
-			<div className="burger" onClick={showNav}>
+			<div className="burger toggle" onClick={showNav}>
 				<div className = "line1"></div>
 				<div className = "line2"></div>
 				<div className = "line3"></div>
 			</div>
 			<h1>TODO LIST</h1>
-			<ul className = "nav-links">				
+			<ul className = "nav-links nav-active">				
 				<li><ProjectForm addProject = {addProject}/></li>
 				<div className = "projects-show">
 					<li>Projects</li>
